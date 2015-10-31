@@ -83,6 +83,24 @@ public class UserController {
      * @param id
      * @return
      */
+    @RequestMapping("/updatePoints")
+    @ResponseBody
+    String updateUser(Integer id, Integer points) {
+        User myUser;
+        try {
+            myUser = userDAO.findOne(id);
+            Integer myPoints = myUser.getPoints();
+            myUser.setPoints(myPoints + points);
+            userDAO.save(myUser);
+
+
+        } catch (Exception c) {
+            return "Error when updating student account information:" + c.toString();
+
+        }
+        return ("Congratulations, " + myUser.getUsername() + "! You have earned " +
+        points + "points.  Your total = " + myUser.getPoints());
+    }
     @RequestMapping("/deleteUser")
     @ResponseBody
     String deleteUserById(Integer id) {
