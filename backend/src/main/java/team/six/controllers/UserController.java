@@ -1,11 +1,16 @@
 package team.six.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.six.models.User;
 import team.six.models.UserDAO;
+
+import javax.management.Query;
+import java.sql.PreparedStatement;
+import java.util.List;
 
 /**
  * Created by abrown on 10/30/15.
@@ -20,17 +25,19 @@ public class UserController {
     @ResponseBody
     public String createUser(String firstname, String lastname, Integer gradelevel, String email, String password){
         User user;
-try{
-    user = new User(firstname, lastname, gradelevel, email, password, 0, 1);
-    userDAO.save(user);
-}catch(Exception ex){
-    return "Error creating user. Try again. ============================" + ex.toString();
-}
+            try{
+                user = new User(firstname, lastname, gradelevel, email, password, 0, 1);
+                userDAO.save(user);
+            }catch(Exception ex){
+                return "Error creating user. Try again. ============================" + ex.toString();
+            }
         return "User successfully created! (id = " + user.getId() + ")";
 
     }
 
-
-
-
+    @RequestMapping("/auth")
+    @ResponseBody
+    public User authUser(String email){
+        return null;
+    }
 }
