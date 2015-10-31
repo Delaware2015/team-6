@@ -30,6 +30,7 @@ angular.module('frontendApp')
     		password: $scope.password
     	}
     	$scope.user = User.signIn(login);
+        $window.location.href = "/#/dashboard"
     	console.log($scope.user);
     }
 

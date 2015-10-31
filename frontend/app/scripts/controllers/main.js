@@ -33,7 +33,7 @@ angular.module('frontendApp')
       points: points
     }
 
-    $scope.currentPoints += points
+    $scope.currentPoints += points;
     localStorage.setItem('points', JSON.stringify($scope.currentPoints)); 
   }
 });

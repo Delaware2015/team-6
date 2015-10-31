@@ -1,21 +1,17 @@
 package team.six.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.six.models.User;
 import team.six.models.UserDAO;
 
-import javax.management.Query;
-import java.sql.PreparedStatement;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by abrown on 10/30/15.
+ * Created by dmilnamow on 10/30/15.
  */
 @Controller
 public class UserController {
@@ -23,35 +19,54 @@ public class UserController {
     @Autowired
     UserDAO userDAO;
 
+    /**
+     * Creates User with the following params. Saves to database using the DAO.
+     * @param firstname
+     * @param lastname
+     * @param username
+     * @param gradelevel
+     * @param email
+     * @param password
+     * @return
+     */
     @RequestMapping("/createUser")
     @ResponseBody
-    public String createUser(String firstname, String lastname, String username, Integer gradelevel, String email, String password){
+    public String createUser(String firstname, String lastname, String username, Integer gradelevel, String email, String password) {
         User user;
 
 
-try{
-    user = new User(firstname, lastname, username, gradelevel, email, password, 0, 1);
-    userDAO.save(user);
-}catch(Exception ex){
-    return "Error creating user. Try again. ============================" + ex.toString();
-}
+        try {
+            user = new User(firstname, lastname, username, gradelevel, email, password, 0, 1);
+            userDAO.save(user);
+        } catch (Exception ex) {
+            return "Error creating user. Try again. ============================" + ex.toString();
+        }
 
         return "User successfully created! (id = " + user.getId() + ")";
 
     }
 
-
+    /**
+     * Authenticates if a user is allowed access. Finds by Username and checks password.
+     * @param username
+     * @param password
+     * @return
+     */
     @RequestMapping("/auth")
     @ResponseBody
-    public User authUser(String username, String password){
+    public User authUser(String username, String password) {
         User noAccess = new User();
         User user = userDAO.findOneByUsernameIgnoreCase(username);
-        if(user.getPassword().equals(password)){
+        if (user.getPassword().equals(password)) {
             return user;
         }
-       return noAccess;
+        return noAccess;
     }
 
+    /**
+     * Returns all users from database.
+     * @return
+     */
     @RequestMapping("/readUsers")
     @ResponseBody
     public User[] readUsers() {
@@ -63,16 +78,38 @@ try{
         return usersArrayList.toArray(new User[usersArrayList.size()]);
     }
 
-    @RequestMapping("/updatePoints")
+    /**
+     * Deletes User by Id.
+     * @param id
+     * @return
+     */
+    @RequestMapping("/deleteUser")
     @ResponseBody
-    public Integer updatePoints(Integer id, Integer points){
-        User user = userDAO.findOne(id);
-        Integer total = user.getPoints() + points;
-        user.setPoints(total);
-        userDAO.save(user);
+    String deleteUserById(Integer id) {
+        try {
 
-        return user.getPoints();
+            userDAO.delete(id);
 
+        } catch (Exception x) {
+            return "Error when deleting user id: " + x.toString();
+        }
+        return ("User id: " + id + " deleted successfully.");
+    }
+
+    /**
+     * Delete all users from database.
+     * @return
+     */
+    @RequestMapping("/deleteAllUsers")
+    @ResponseBody
+    String deleteAllUsers() {
+        try {
+            userDAO.deleteAll();
+        } catch (Exception e) {
+            return "Error when deleting all: " + e.toString();
+
+        }
+        return "All users have been removed from the database.";
     }
 
 }

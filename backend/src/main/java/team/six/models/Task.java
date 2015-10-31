@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @Table(name = "task")
 public class Task {
-
+    //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
@@ -26,7 +26,7 @@ public class Task {
     @NotNull
     Integer listid;
 
-
+    //Constructors
     public Task(String title, String description, Integer points, Integer listid) {
         this.title = title;
         this.description = description;
@@ -38,6 +38,7 @@ public class Task {
 
     }
 
+    //Getters and Setters
     public Integer getId() {
         return id;
     }

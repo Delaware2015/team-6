@@ -4,12 +4,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by abrown on 10/30/15.
+ * Created by dmilnamow on 10/30/15.
  */
 @Entity
 @Table(name = "student")
 public class User {
-
+    //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
@@ -35,7 +35,7 @@ public class User {
 
     Integer tasklistid;
 
-
+    //Constructors
     public User(String firstname, String lastname, String username, Integer gradelevel, String email, String password, Integer points, Integer tasklistid) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -52,6 +52,7 @@ public class User {
 
     }
 
+    //Getters and Setters
     public String getUsername() {
         return username;
     }
