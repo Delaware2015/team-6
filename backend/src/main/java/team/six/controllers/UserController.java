@@ -72,7 +72,7 @@ try{
         Integer newTotal = updatePoints.getPoints();
 
         return newTotal;
-        
+
     }
 
 }
