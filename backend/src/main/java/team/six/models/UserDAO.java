@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface UserDAO extends CrudRepository<User, Integer>{
 
+    User findByEmailAndPassword(String email, String password);
 }
