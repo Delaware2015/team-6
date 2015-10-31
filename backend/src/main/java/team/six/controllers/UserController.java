@@ -41,7 +41,8 @@ public class UserController {
     @RequestMapping("/auth")
     @ResponseBody
     public User authUser(String email){
-        return null;
+
+       return null;
     }
 
     @RequestMapping("/readUsers")

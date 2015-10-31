@@ -8,10 +8,20 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('TaskCtrl', function ($scope, Task) {
+  		$scope.tasks = Task.all();
+
+   	 	$scope.$watch(function(){return Task.all();}, function(newVal, oldVal) {
+		if (typeof newVal !== 'undefined') {
+       		$scope.tasks= newVal; 
+       		console.log(newVal)
+       
+    	}});
+
+   	 
+  })
+
+  .controller('TaskDetailCtrl', function($scope, $routeParams, Task) {
+  $scope.taskDetail = Task.get($routeParams.id);
+  console.log($scope.taskDetail);
+});

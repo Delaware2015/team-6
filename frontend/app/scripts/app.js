@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'frontendApp.loginService'
+    'frontendApp.loginService',
+    'frontendApp.taskService'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -29,6 +30,16 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'login'
+      })
+      .when('/tasks', {
+        templateUrl: 'views/tasks.html',
+        controller: 'TaskCtrl',
+        controllerAs: 'task'
+      })
+      .when('/tasks/:id', {
+        templateUrl: 'views/task-detail.html',
+        controller: 'TaskDetailCtrl',
+        controllerAs: 'task'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
