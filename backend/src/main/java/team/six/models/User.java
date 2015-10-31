@@ -21,6 +21,9 @@ public class User {
     String lastname;
 
     @NotNull
+    String username;
+
+    @NotNull
     String email;
 
     @NotNull
@@ -33,13 +36,12 @@ public class User {
     Integer tasklistid;
 
 
-
-
-    public User(String firstname, String lastname, Integer gradelevel, String email, String password, Integer points, Integer tasklistid) {
+    public User(String firstname, String lastname, String username, Integer gradelevel, String email, String password, Integer points, Integer tasklistid) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.gradelevel = gradelevel;
         this.email = email;
+        this.username = username;
         this.password = password;
         this.points = points;
         this.tasklistid = tasklistid;
@@ -48,6 +50,14 @@ public class User {
 
     public User() {
 
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Integer getId() {

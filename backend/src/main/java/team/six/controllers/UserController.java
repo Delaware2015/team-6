@@ -21,10 +21,10 @@ public class UserController {
 
     @RequestMapping("/createUser")
     @ResponseBody
-    public String createUser(String firstname, String lastname, Integer gradelevel, String email, String password){
+    public String createUser(String firstname, String lastname, String username, Integer gradelevel, String email, String password){
         User user;
 try{
-    user = new User(firstname, lastname, gradelevel, email, password, 0, 1);
+    user = new User(firstname, lastname, username, gradelevel, email, password, 0, 1);
     userDAO.save(user);
 }catch(Exception ex){
     return "Error creating user. Try again. ============================" + ex.toString();
@@ -43,6 +43,7 @@ try{
         }
         return usersArrayList.toArray(new User[usersArrayList.size()]);
     }
+
 
 
 
