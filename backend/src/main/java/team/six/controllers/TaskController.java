@@ -43,5 +43,30 @@ public class TaskController {
         return tasksArrayList.toArray(new Task[tasksArrayList.size()]);
     }
 
+    @RequestMapping("/deleteTask")
+    @ResponseBody
+    String deleteTaskById(Integer id) {
+        try {
+
+            taskDAO.delete(id);
+
+        } catch (Exception x) {
+            return "Error when deleting task id: " + x.toString();
+        }
+        return ("Task id: " + id + " deleted successfully.");
+    }
+
+    @RequestMapping("/deleteAllTasks")
+    @ResponseBody
+    String deleteAllTasks() {
+        try {
+            taskDAO.deleteAll();
+        } catch (Exception e) {
+            return "Error when deleting all: " + e.toString();
+
+        }
+        return "All tasks have been removed from the database.";
+    }
+
 
 }

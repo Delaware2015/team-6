@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by abrown on 10/30/15.
+ * Created by dmilnamow on 10/30/15.
  */
 @Controller
 public class UserController {
@@ -59,21 +59,29 @@ public class UserController {
         return usersArrayList.toArray(new User[usersArrayList.size()]);
     }
 
-   /* @RequestMapping("/updatePoints")
+
+    @RequestMapping("/deleteUser")
     @ResponseBody
-    public String updatePoints(Integer id, Integer points) {
-        Integer newTotal;
+    String deleteUserById(Integer id) {
         try {
-            User myUser = userDAO.findOne(id);
-            myUser.setPoints(myUser.getPoints() + points);
-            //userDAO.save(myUser);
-            newTotal = myUser.getPoints();
 
-        }catch(Exception ex){
-            return "Error updating points: " + ex.toString();
+            userDAO.delete(id);
+
+        } catch (Exception x) {
+            return "Error when deleting user id: " + x.toString();
         }
-            return "You earned " + points + " points! Total points = " + newTotal;
-
-        }*/
-
+        return ("User id: " + id + " deleted successfully.");
     }
+    @RequestMapping("/deleteAllUsers")
+    @ResponseBody
+    String deleteAllUsers() {
+        try {
+            userDAO.deleteAll();
+        } catch (Exception e) {
+            return "Error when deleting all: " + e.toString();
+
+        }
+        return "All users have been removed from the database.";
+    }
+
+}

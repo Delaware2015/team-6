@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by abrown on 10/30/15.
+ * Created by dmilnamow on 10/30/15.
  */
 @Entity
 @Table(name = "student")
