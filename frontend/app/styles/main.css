@@ -59,6 +59,12 @@ body {
   margin-top: 28px;
 }
 
+.signup-form{
+  background:none;
+  border-bottom:2px solid black !important;
+  border:none;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {

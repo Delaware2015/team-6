@@ -1,23 +1,28 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="col-sm-12" style="background-color:#2C3E50; border-radius:3px; padding:20px; margin-bottom:10px; color:white;">
+<i class="fa fa-user" style="font-size:20px;"></i><span style="font-size:18px; color:white;"> {{user.firstname}} {{user.lastname}}</span>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+<div class="col-sm-12" style="background-color:white; border-radius:3px; padding:20px; height:90px">
+   <i class="fa fa-trophy" style="font-size:60px; float:right; color:#BEDB39;"></i>
+  <p style="float:right; font-size:19px; margin-right:8px; ">You currently have <span style="font-size:40px; color:#BEDB39;">25</span> points</p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+</div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="col-md-12" style="margin-top:10px; margin-bottom:5px;padding:5px; color:white;">
+<b>YOUR PROGRESS</b> 
+</div>
+
+<div class="progress" style="background-color:white; margin-top:20px;">
+  <div class="progress-bar" role="progressbar" aria-valuenow="0"
+  aria-valuemin="0" aria-valuemax="100" style="width:10%">
+    10%
+  </div>
+</div>
+
+<div class="col-md-12" style="margin-top:10px; margin-bottom:10px;padding:15px; color:white;">
+<b>YOUR TASKS</b> 
+</div>
+<div ng-repeat="task in tasks">
+  <a href="/#/tasks/{{task.id}}"><div class="col-sm-12" style="background-color:white; border-left:8px solid #2C3E50; margin-bottom:10px; padding:40px; border-radius:5px;">{{task.title}}
+  </div></a>
 </div>

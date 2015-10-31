@@ -66,13 +66,12 @@ try{
     @RequestMapping("/updatePoints")
     @ResponseBody
     public Integer updatePoints(Integer id, Integer points){
-        User updatePoints = userDAO.findOne(id);
-        Integer currentPoints = updatePoints.getPoints();
-        updatePoints.setPoints(currentPoints + points);
-        Integer newTotal = updatePoints.getPoints();
-        userDAO.save(updatePoints);
+        User user = userDAO.findOne(id);
+        Integer total = user.getPoints() + points;
+        user.setPoints(total);
+        userDAO.save(user);
 
-        return newTotal;
+        return user.getPoints();
 
     }
 

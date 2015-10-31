@@ -11,7 +11,7 @@ angular.module('frontendApp.loginService', [])
     console.log("create User");
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/createUser?firstname='+ user.firstname + '&lastname='+user.lastname+'&gradelevel='+ user.gradelevel + '&email=' +user.email + ' &password=' +user.password 
+      url: 'http://localhost:8080/createUser?firstname='+ user.firstname + '&lastname='+user.lastname+'&gradelevel='+ user.gradelevel + '&email=' +user.email + '&username='+ user.username +'&password=' +user.password 
     }).then(function successCallback(output){    });
   }
 

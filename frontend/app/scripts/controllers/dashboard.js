@@ -1,15 +1,5 @@
-'use strict';
-
-/**
- * @ngdoc function
- * @name frontendApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the frontendApp
- */
-angular.module('frontendApp')
-  .controller('LoginCtrl', function ($scope, User, $window) {
-    localStorage.clear();
+angular.module('dashboard.controller')
+  .controller('DashboardCtrl', function ($scope, User) {
     $scope.createUser = function(){
     	var user = {
     		firstname: $scope.firstname,
@@ -20,8 +10,6 @@ angular.module('frontendApp')
     		password: $scope.password
     	}
     	User.createUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
-        $window.location.href = '/#/';
     }
 
     $scope.signIn = function(){

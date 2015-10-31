@@ -1,13 +1,13 @@
 <div class="col-md-6">
-<input ng-model="title" placeholder="Title"/><br/>
-<textarea ng-model="description" placeholder="Description"></textarea><br/>
-<input ng-model="points" placeholder="Points" /><br/>
-<a href="/#/" ng-click="createNote()">Create Note</a>
+<input ng-model="title" placeholder="Title" style="padding:5px; width:50%;"/><br/>
+<textarea ng-model="description" placeholder="Description" style="padding:5px; width:50%; height:200px;"></textarea><br/>
+<input ng-model="points" placeholder="Points" type="number" /><br/>
+<a href="/#/" ng-click="createNote()"><button style="margin-top:10px;" class="btn btn-primary">Create Note</button></a>
 
 
 
 </div>
-<div class="col-md-6">
+<div class="col-md-6" style="min-height:200px; background-color:white;">
 <h1>{{title}}</h1>
 <div ng-bind-html="description" >
 </div>

@@ -2,8 +2,8 @@
 
 
 
-
-<h4>My name is <input type="text" ng-model="firstname" placeholder="firstname" /> <input type="text" ng-model="lastname" placeholder="lastname" />. I am in 
+<div class="col-sm-12" style="background-color:white; padding:20px;">
+<h4>My name is <input class="signup-form" type="text" ng-model="firstname" placeholder="Firstname" /> <input class="signup-form" type="text" ng-model="lastname" placeholder="Lastname" />. I am in 
 <select>
 	<option>9th</option>
 	<option>10th</option>
@@ -12,7 +12,8 @@
 </select> grade. I am interested in a <select>
 	<option>2 Year</option>
 	<option>4 Year</option>
-</select> college. My email is <input type="email" ng-model="email" placeholder="email" /> and my password is <input type="password" ng-model="password" placeholder="password" />
+</select> college. My username is <input class="signup-form" ng-model="username" placeholder="Username"/>My email is <input class="signup-form" type="email" ng-model="email" placeholder="Email" /> and my password is <input class="signup-form" type="password" ng-model="password" placeholder="Password" />
 
-Keep my parents <input type="text" placeholder="Parent Name" /> notified of my progress at <input type="text" placeholder="Parent Email" />
-<button ng-click="createUser()">Submit</button>
+Keep my parent <input class="signup-form" type="text" placeholder="Parent Name" /> notified of my progress at <input class="signup-form" type="text" placeholder="Parent Email" />
+<button class="btn btn-primary" ng-click="createUser()">Submit</button>
+</div>

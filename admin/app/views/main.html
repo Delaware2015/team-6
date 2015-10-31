@@ -1,6 +1,7 @@
-<button ng-click="reload()">Refresh</button>
+    
+<button ng-click="reload()" class="btn btn-primary">Refresh</button>
+<a href="/#/newTask"><button class="btn btn-success">Create New Task</button></a>
 <h3>Tasks</h3>
 <div ng-repeat="task in tasks">
 {{task.title}}
 </div>
-<a href="/#/newTask">Create New Task</a>

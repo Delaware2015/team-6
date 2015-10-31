@@ -25,6 +25,7 @@ angular.module('frontendApp.taskService', [])
     all: function() {
       return tasks;
     },
+    sendPoints: sendPoints,
     get: function(id) {
       for (var i = 0; i < tasks.length; i++) {
         if (tasks[i].id === parseInt(id)) {
