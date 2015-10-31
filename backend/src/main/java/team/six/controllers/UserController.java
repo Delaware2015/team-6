@@ -1,16 +1,12 @@
 package team.six.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.six.models.User;
 import team.six.models.UserDAO;
 
-import javax.management.Query;
-import java.sql.PreparedStatement;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -25,16 +21,16 @@ public class UserController {
 
     @RequestMapping("/createUser")
     @ResponseBody
-    public String createUser(String firstname, String lastname, String username, Integer gradelevel, String email, String password){
+    public String createUser(String firstname, String lastname, String username, Integer gradelevel, String email, String password) {
         User user;
 
 
-try{
-    user = new User(firstname, lastname, username, gradelevel, email, password, 0, 1);
-    userDAO.save(user);
-}catch(Exception ex){
-    return "Error creating user. Try again. ============================" + ex.toString();
-}
+        try {
+            user = new User(firstname, lastname, username, gradelevel, email, password, 0, 1);
+            userDAO.save(user);
+        } catch (Exception ex) {
+            return "Error creating user. Try again. ============================" + ex.toString();
+        }
 
         return "User successfully created! (id = " + user.getId() + ")";
 
@@ -43,13 +39,13 @@ try{
 
     @RequestMapping("/auth")
     @ResponseBody
-    public User authUser(String username, String password){
+    public User authUser(String username, String password) {
         User noAccess = new User();
         User user = userDAO.findOneByUsernameIgnoreCase(username);
-        if(user.getPassword().equals(password)){
+        if (user.getPassword().equals(password)) {
             return user;
         }
-       return noAccess;
+        return noAccess;
     }
 
     @RequestMapping("/readUsers")
@@ -63,17 +59,21 @@ try{
         return usersArrayList.toArray(new User[usersArrayList.size()]);
     }
 
-    @RequestMapping("/updatePoints")
+   /* @RequestMapping("/updatePoints")
     @ResponseBody
-    public Integer updatePoints(Integer id, Integer points){
-        User updatePoints = userDAO.findOne(id);
-        Integer currentPoints = updatePoints.getPoints();
-        updatePoints.setPoints(currentPoints + points);
-        Integer newTotal = updatePoints.getPoints();
-        userDAO.save(updatePoints);
+    public String updatePoints(Integer id, Integer points) {
+        Integer newTotal;
+        try {
+            User myUser = userDAO.findOne(id);
+            myUser.setPoints(myUser.getPoints() + points);
+            //userDAO.save(myUser);
+            newTotal = myUser.getPoints();
 
-        return newTotal;
+        }catch(Exception ex){
+            return "Error updating points: " + ex.toString();
+        }
+            return "You earned " + points + " points! Total points = " + newTotal;
+
+        }*/
 
     }
-
-}
