@@ -31,10 +31,8 @@ angular.module('frontendApp')
     }
 
     $scope.$watch(function(){return User.getVerified();}, function(newVal, oldVal) {
-		if (typeof newVal !== 'undefined') {
-       		
-       		console.log(newVal)
-       
+		if (newVal == true) {
+       	    console.log("Access Granted");
     	}});
 
   });

@@ -24,4 +24,13 @@ angular.module('frontendApp')
   .controller('TaskDetailCtrl', function($scope, $routeParams, Task) {
   $scope.taskDetail = Task.get($routeParams.id);
   console.log($scope.taskDetail);
+  $scope.completedTask = function(points){
+    var retrievedUser = localStorage.getItem('user');
+    var total = {
+      id: retrievedUser.id,
+      points: points
+    } 
+
+    Test.sendPoints(total);
+  }
 });
