@@ -15,5 +15,19 @@ public class User {
 
     @NotNull
     String firstname;
+
+    @NotNull
+    String lastname;
+
+    @NotNull
+    String school;
+
+    @NotNull
+    Integer gradelevel;
+
+    @NotNull
+    Integer points;
+
+    
    
 }
