@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import team.six.models.User;
 import team.six.models.UserDAO;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  * Created by abrown on 10/30/15.
  */
@@ -28,6 +31,17 @@ try{
 }
         return "User successfully created! (id = " + user.getId() + ")";
 
+    }
+
+    @RequestMapping("/readUsers")
+    @ResponseBody
+    public User[] readUsers() {
+        Iterator<User> read = userDAO.findAll().iterator();
+        ArrayList<User> usersArrayList = new ArrayList<>();
+        while (read.hasNext()) {
+            usersArrayList.add(read.next());
+        }
+        return usersArrayList.toArray(new User[usersArrayList.size()]);
     }
 
 
