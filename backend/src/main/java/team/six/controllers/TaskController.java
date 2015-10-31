@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import team.six.models.Task;
 import team.six.models.TaskDAO;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  * Created by dmilnamow on 10/30/15.
  */
@@ -29,7 +32,16 @@ public class TaskController {
         return "Task successfully created! (id = " + task.getId() + ")";
 
     }
-
+    @RequestMapping("/readTasks")
+    @ResponseBody
+    public Task[] readTasks() {
+        Iterator<Task> read = taskDAO.findAll().iterator();
+        ArrayList<Task> tasksArrayList = new ArrayList<>();
+        while (read.hasNext()) {
+            tasksArrayList.add(read.next());
+        }
+        return tasksArrayList.toArray(new Task[tasksArrayList.size()]);
+    }
 
 
 }
