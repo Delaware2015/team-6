@@ -1,8 +1,8 @@
-{{taskDetail.title}}
+<h1>{{taskDetail.title}}</h1>
 <br/>
-{{taskDetail.description}}
+<div ng-bind-html="taskDetail.description"></div>
 <br/>
 {{taskDetail.points}}
 <br/>
-<button ng-click="completedTask(taskDetail.id)">I have completed this Task</button>
+<button ng-click="completedTask(taskDetail.points)">I have completed this Task</button>
 <button ng-click="">No I need Help</button>

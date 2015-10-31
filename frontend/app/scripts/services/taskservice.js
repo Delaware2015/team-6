@@ -12,7 +12,13 @@ angular.module('frontendApp.taskService', [])
     }).then(function successCallback(output){ 
       tasks = output.data
     });
-    
+   
+    function sendPoints(total){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8080/updatePoints?id='+ total.id + '&points='+total.points
+    }).then(function successCallback(output){    });
+  } 
 
 
   return {
