@@ -8,12 +8,14 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('LoginCtrl', function ($scope) {
+  .controller('LoginCtrl', function ($scope, User) {
     $scope.createUser = function(){
     	var user = {
     		firstname: $scope.firstname,
     		lastname: $scope.lastname,
-    		gradelevel: $scope.gradelevel
+    		gradelevel: $scope.gradelevel,
+    		email: $scope.email,
+    		password: $scope.password
     	}
     	console.log(user);
     }
