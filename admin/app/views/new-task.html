@@ -1,0 +1,17 @@
+<div class="col-md-6">
+<input ng-model="title" placeholder="Title"/><br/>
+<textarea ng-model="description" placeholder="Description"></textarea><br/>
+<input ng-model="points" placeholder="Points" /><br/>
+<a href="/#/" ng-click="createNote()">Create Note</a>
+
+
+
+</div>
+<div class="col-md-6">
+<h1>{{title}}</h1>
+<div ng-bind-html="description" >
+</div>
+Points: {{points}}
+
+</div>
+

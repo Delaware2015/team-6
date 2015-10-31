@@ -25,14 +25,17 @@ public class UserController {
 
     @RequestMapping("/createUser")
     @ResponseBody
-    public String createUser(String firstname, String lastname, Integer gradelevel, String email, String password){
+    public String createUser(String firstname, String lastname, String username, Integer gradelevel, String email, String password){
         User user;
-            try{
-                user = new User(firstname, lastname, gradelevel, email, password, 0, 1);
-                userDAO.save(user);
-            }catch(Exception ex){
-                return "Error creating user. Try again. ============================" + ex.toString();
-            }
+
+
+try{
+    user = new User(firstname, lastname, username, gradelevel, email, password, 0, 1);
+    userDAO.save(user);
+}catch(Exception ex){
+    return "Error creating user. Try again. ============================" + ex.toString();
+}
+
         return "User successfully created! (id = " + user.getId() + ")";
 
     }
@@ -40,9 +43,13 @@ public class UserController {
 
     @RequestMapping("/auth")
     @ResponseBody
-    public User authUser(String email){
-
-       return null;
+    public User authUser(String username, String password){
+        User noAccess = new User();
+        User user = userDAO.findOneByUsernameIgnoreCase(username);
+        if(user.getPassword().equals(password)){
+            return user;
+        }
+       return noAccess;
     }
 
     @RequestMapping("/readUsers")
