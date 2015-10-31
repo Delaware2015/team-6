@@ -17,6 +17,6 @@ angular.module('frontendApp')
     		email: $scope.email,
     		password: $scope.password
     	}
-    	console.log(user);
+    	User.createUser(user);
     }
   });

@@ -8,12 +8,11 @@ angular.module('frontendApp.loginService', [])
   console.log("Test");
 
   function createUser(user){
+    console.log("create User");
     $http({
       method: 'GET',
       url: 'http://localhost:8080/createUser?firstname='+ user.firstname + '&lastname='+user.lastname+'&gradelevel='+ user.gradelevel + '&email=' +user.email + ' &password=' +user.password 
-    }).then(function successCallback(output){
-        console.log(output);
-    });
+    }).then(function successCallback(output){    });
   }
 
 
