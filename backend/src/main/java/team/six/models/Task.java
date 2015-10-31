@@ -34,6 +34,10 @@ public class Task {
         this.listid = listid;
     }
 
+    public Task(){
+        
+    }
+
     public Integer getId() {
         return id;
     }
