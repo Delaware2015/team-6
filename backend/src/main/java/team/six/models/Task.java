@@ -35,7 +35,7 @@ public class Task {
     }
 
     public Task(){
-        
+
     }
 
     public Integer getId() {
