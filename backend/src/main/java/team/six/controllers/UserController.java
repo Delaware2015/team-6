@@ -70,6 +70,7 @@ try{
         Integer currentPoints = updatePoints.getPoints();
         updatePoints.setPoints(currentPoints + points);
         Integer newTotal = updatePoints.getPoints();
+        userDAO.save(updatePoints);
 
         return newTotal;
 
