@@ -63,4 +63,16 @@ try{
         return usersArrayList.toArray(new User[usersArrayList.size()]);
     }
 
+    @RequestMapping("/updatePoints")
+    @ResponseBody
+    public Integer updatePoints(Integer id, Integer points){
+        User updatePoints = userDAO.findOne(id);
+        Integer currentPoints = updatePoints.getPoints();
+        updatePoints.setPoints(currentPoints + points);
+        Integer newTotal = updatePoints.getPoints();
+
+        return newTotal;
+        
+    }
+
 }

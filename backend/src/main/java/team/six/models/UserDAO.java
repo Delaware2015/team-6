@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserDAO extends CrudRepository<User, Integer>{
 
     User findOneByUsernameIgnoreCase(String username);
+
 }
